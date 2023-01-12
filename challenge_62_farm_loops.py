@@ -24,11 +24,15 @@ plants_only = ["bananas", "apples", "oranges", "carrots", "celery"]
 #            print("carrots, "celery"")
 #        else :
 #            print(farm["agriculture"])
-    
+
+# iterate through farm2
 for farm in farms2:
+    # check against usrs input
     if farm["name"] == user_pick2:
+        # iterate through agriculture array
         for el in farm["agriculture"]:
+            # check against known plants elements
             if el not in plants_only:
-                print(el)
+                print(el) # print animals only
 
                 
