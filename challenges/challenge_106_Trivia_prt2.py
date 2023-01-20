@@ -15,9 +15,6 @@ TRIVIA= []
 QUESTION_IDX= 0
 TOTALS= {"correct": 0, "incorrect":0}
 
-def getTrivia():
-    global TRIVIA
-
 def getNextQuestion():
     global QUESTION_IDX, TOTAL_CORRECT
     global TRIVIA
@@ -62,3 +59,4 @@ if __name__ == "__main__":
     resp = requests.get(URL).json()
     TRIVIA = resp["results"]
     APP.run(host="0.0.0.0", port=3000)
+
