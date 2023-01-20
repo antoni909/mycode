@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Trivia APP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>body{text-align:center}</style>
+        <link rel></link>
+    </head>
+    <body>
+        <h1>TRIVIA PART I</h1>
+        <img src={{ img }} alt="Avatar" style="width:200px">
+
+        <h3>Progress</h3>
+        <progress value={{question_number}} max={{number_of_questions}}></progress>  {{question_number}} / {{number_of_questions}} 
+        
+        <h3>TRIVIA Question</h3>
+        <p>{{current_trivia["question"]}}</p>
+        
+
+        <form action = "/handle_resp" method = "POST">
+            {%for a in range(0,length)%}
+            <div>
+                <input type="radio" name="trivia" value={{answers[a]}} />{{answers[a]}}
+            </div>
+                
+            {%endfor%}
+            <p><input type = "submit" value = "submit"></p>
+        </form>
+
+    </body>
+</html>
