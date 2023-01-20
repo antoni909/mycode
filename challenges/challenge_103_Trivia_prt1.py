@@ -7,28 +7,12 @@ from flask import redirect
 from flask import url_for
 from flask import render_template
 from flask import request
-"""
-Make the landing page ("/") return an HTML form.
-
-The form should ask a trivia question of your choosing
-Depending on the answer POSTed from the form, do the following:
-	- If the answer is correct, redirect your user to the "/correct" route!
-- If the answer is wrong, return them to the form to try again.
-"""
-# {  
-# 'category': 'General Knowledge', 
-# 'type': 'multiple', 
-# 'difficulty': 'medium', 
-# 'question': 'Which river flows through the Scottish city of Glasgow?', 
-# 'correct_answer': 'Clyde', 
-# 'incorrect_answers': ['Tay', 'Dee', 'Tweed']  
-# }
 
 URL= "https://opentdb.com/api.php?amount=20&type=multiple"
 IMG= "static/OPENTRIVIA_LOGO.png"
 APP= Flask(__name__)
 TRIVIA= []
-QUESTION_IDX= 0   
+QUESTION_IDX= 0
 
 def getNextQuestion():
     global QUESTION_IDX
@@ -45,7 +29,7 @@ def getAnswersList():
         answers_list.insert(random_idx,correct_a)
     return answers_list
 
-@APP.route("/") # default GET
+@APP.route("/") 
 def index():
     print(TRIVIA[QUESTION_IDX]["correct_answer"])
     answers_list = getAnswersList()
@@ -66,6 +50,5 @@ def correct():
 if __name__ == "__main__":
     resp = requests.get(URL).json()
     TRIVIA = resp["results"]
-    
-    # http://0.0.0.0:3000/
+
     APP.run(host="0.0.0.0", port=3000)
